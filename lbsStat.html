@@ -1,0 +1,135 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            zoomType: 'xy'
+        },
+        //colors: ['#0000FF', '#0066FF', '#00CCFF'],
+
+        title: {
+            text: 'Statistics of visitors and campaign events from SSG LBS Platform '
+        },
+        subtitle: {
+            text: 'Source: SLAB'
+        },
+        xAxis: [{
+            categories: ['03-07', '03-08', '03-09', '03-10', '03-11', '03-12', '03-13', '03-14', '03-15', '03-16', '03-17', '03-18', '03-19', '03-20', '03-21', '03-22', '03-23', '03-24', '03-25', '03-26', '03-27', '03-28', '03-29', '03-30', '03-31', '04-01', '04-02', '04-03', '04-04', '04-05', '04-06', '04-07'], /* ['03-07', '03-08', '03-09', '03-10', '03-11', '03-12', '03-13', '03-14', '03-15', '03-16', '03-17', '03-18', '03-19', '03-20', '03-21', '03-22', '03-23', '03-24', '03-25', '03-26', '03-27', '03-28', '03-29', '03-30', '03-31', '04-01', '04-02', '04-03', '04-04', '04-05', '04-06', '04-07']*/
+            crosshair: true
+        }],
+        yAxis: [{ // Primary yAxis
+        		max:2500,
+            labels: {
+                format: '{value}건',
+                style: {
+                    color: Highcharts.getOptions().colors[3]
+                }
+            },
+            title: {
+                text: '캠페인 event 수',
+                style: {
+                    color:Highcharts.getOptions().colors[3]
+                }
+            },
+            opposite: true
+
+        }, { // Secondary yAxis
+        		max:50,
+            gridLineWidth: 0,
+            title: {
+                text: '방문자',
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
+            },
+            labels: {
+                format: '{value} 명',
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+
+        }],
+        tooltip: {
+            shared: true
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            },
+            spline: {color:Highcharts.getOptions().colors[3]}
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            x: 80,
+            verticalAlign: 'top',
+            y: 55,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+        },
+        series: [{
+            name: 'newvisit',
+            type: 'column',
+            yAxis: 1,
+            data: [0, 2, 4, 0, 4, 0, 0, 1, 22, 16, 12, 9, 0, 0, 3, 4, 3, 0, 3, 2, 2, 1, 9, 3, 28, 9, 8, 7, 4, 10, 4, 7], /*[0, 2, 4, 0, 4, 0, 0, 1, 22, 16, 12, 9, 0, 0, 3, 4, 3, 0, 3, 2, 2, 1, 9, 3, 28, 9, 8, 7, 4, 10, 4, 7]*/
+            tooltip: {
+                valueSuffix: ' 명'
+            }
+
+        }, {
+            name: 'revisit',
+            type: 'column',
+            yAxis: 1,
+            data: [0, 0, 2, 1, 2, 1, 0, 2, 4, 16, 17, 20, 3, 2, 7, 2, 7, 3, 6, 1, 1, 4, 5, 13, 18, 20, 8, 6, 15, 20, 20, 21], /*[0, 0, 2, 1, 2, 1, 0, 2, 4, 16, 17, 20, 3, 2, 7, 2, 7, 3, 6, 1, 1, 4, 5, 13, 18, 20, 8, 6, 15, 20, 20, 21]*/
+            marker: {
+                enabled: false
+            },
+            dashStyle: 'shortdot',
+            tooltip: {
+                valueSuffix: ' 명'
+            }
+
+        }, {
+
+            name: '캠페인 event',
+            type: 'spline',
+            data: [0, 20, 18, 9, 36, 12, 0, 50, 334, 899, 896, 2090, 32, 9, 11, 0, 0, 0, 11, 0, 0, 91, 84, 112, 889, 273, 309, 92, 79, 573, 299, 645],/*[0, 20, 18, 9, 36, 12, 0, 50, 334, 899, 896, 2090, 32, 9, 11, 0, 0, 0, 11, 0, 0, 91, 84, 112, 889, 273, 309, 90, 79, 573, 299, 645]*/
+            tooltip: {
+                valueSuffix: ' 건'
+            }
+        }]
+    });
+});
+
+
+//]]>
+</script>
+</head>
+<body>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+
+</body>
+</html>
