@@ -131,14 +131,14 @@ class LbsStat(BotPlugin):
         # sh.git.remote('add', 'sh-pages', repo_origin)
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits html"')
-        sh.git.push('gh-pages', 'origin/gh-pages')
+        sh.git.push('origin', 'origin/gh-pages')
 
         #TODO: should push lbsStat.html to github
         gen_webshot(CHART_URL,IMG_PATH)
         # sh.git.remote('add', 'sh-pages', repo_origin)
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits png"')
-        sh.git.push('gh-pages', 'origin/gh-pages')
+        sh.git.push('origin', 'origin/gh-pages')
 
 
 #보낼 문장 생성
