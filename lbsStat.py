@@ -128,18 +128,17 @@ class LbsStat(BotPlugin):
         sh.cd(BASE_DIR)
         print "#######"+str(sh.pwd())
         repo_origin = 'https://github.com/gnooshin/lbsStat.git'
-        # sh.git.remote('add', 'origin', repo_origin)
-        sh.git.remote('add', 'sh-pages', repo_origin)
+        # sh.git.remote('add', 'sh-pages', repo_origin)
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits html"')
-        sh.git.push('gh-pages', 'gh-pages')
+        sh.git.push('gh-pages', 'origin/gh-pages')
 
         #TODO: should push lbsStat.html to github
         gen_webshot(CHART_URL,IMG_PATH)
-        sh.git.remote('add', 'sh-pages', repo_origin)
+        # sh.git.remote('add', 'sh-pages', repo_origin)
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits png"')
-        sh.git.push('gh-pages', 'gh-pages')
+        sh.git.push('gh-pages', 'origin/gh-pages')
 
 
 #보낼 문장 생성
