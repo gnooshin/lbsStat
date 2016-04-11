@@ -1,0 +1,9 @@
+[Core]
+Name = LbsStat
+Module = LbsStat
+
+[Python]
+Version = 2+
+
+[Documentation]
+Description = ssg lbs platform statistics plugin
