@@ -129,44 +129,18 @@ class LbsStat(BotPlugin):
         print "#######"+str(sh.pwd())
         repo_origin = 'https://github.com/gnooshin/lbsStat.git'
         # sh.git.remote('add', 'origin', repo_origin)
+        sh.git.remote('add', 'sh-pages', repo_origin)
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits html"')
-        sh.git.push('origin', 'sh-pages')
+        sh.git.push('gh-pages', 'gh-pages')
 
         #TODO: should push lbsStat.html to github
-        from gittle import Gittle
-        # repo_path = '/gdev/sm/ssgbot/errbot-plugins/LbsStat'
-        # repo_url = 'https://github.com/gnooshin/lbsStat.git'
-        # repo = Gittle(repo_path, origin_uri=repo_url)
-        # key_file = open('/Users/jeenuine/.ssh/git_rsa')
-        # repo.auth(pkey=key_file)
-        # # repo.auth(username='gnooshin',password='0Zk2ros!')
-        # repo.stage('lbsStat.html')
-        # repo.commit(name="Jeenwoo Park", email="gnoopy@shinsegae.com", message="SsgBot commits html ")
-        # repo.push()
-
-
-        # repo_folder = os.path.join(
-        #     '/tmp',
-        #     'bitbucket-' + ''.join(random.choice(string.digits + string.letters) for x in range(10)))
-        # sh.mkdir(repo_folder)
-        # sh.cd(repo_folder)
-        # self.pwd = sh.pwd().strip()
-        # sh.git.init()
-        # sh.git.remote('add', 'origin', repo_origin)
-        # # Add commit with empty file.
-        # sh.touch('file')
-        # sh.git.add('.')
-
-
         gen_webshot(CHART_URL,IMG_PATH)
+        sh.git.remote('add', 'sh-pages', repo_origin)
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits png"')
-        sh.git.push('origin', 'sh-pages')
+        sh.git.push('gh-pages', 'gh-pages')
 
-        # repo.stage('lbsstat.png')
-        # repo.commit(name="Jeenwoo Park", email="gnoopy@shinsegae.com", message="SsgBot commit png newly created")
-        # repo.push()
 
 #보낼 문장 생성
 #-------------------------------------------------------------
