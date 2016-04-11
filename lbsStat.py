@@ -124,7 +124,6 @@ class LbsStat(BotPlugin):
                     fout.write(line)
                 fout.close()
         import sh
-        print "#######"+str(sh.pwd())
         sh.cd(BASE_DIR)
         print "#######"+str(sh.pwd())
         repo_origin = 'https://github.com/gnooshin/lbsStat.git'
@@ -136,6 +135,10 @@ class LbsStat(BotPlugin):
         #TODO: should push lbsStat.html to github
         gen_webshot(CHART_URL,IMG_PATH)
         # sh.git.remote('add', 'sh-pages', repo_origin)
+        print "#######"+str(sh.pwd())
+        sh.cd(BASE_DIR)
+        print "#######"+str(sh.pwd())
+
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits png"')
         sh.git.push('origin', 'origin/gh-pages')
