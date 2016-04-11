@@ -51,7 +51,8 @@ def gen_webshot(url,file):
         driver.set_window_size(1000, 400)
         driver.get(url) #'http://gnooshin.github.io/lbsStat/lbsStat.html'
         time.sleep(5)
-        driver.get_screenshot_as_file(file) #'lbsstat.png'
+        driver.save_screenshot(file) #'lbsstat.png'
+        print "##### png file : "+str(file)
 
 class LbsStat(BotPlugin):
     """SSG LbsStat plugin for Errbot"""
