@@ -136,8 +136,6 @@ class LbsStat(BotPlugin):
         gen_webshot(CHART_URL,IMG_PATH)
         # sh.git.remote('add', 'sh-pages', repo_origin)
         print "#######"+str(sh.pwd())
-        sh.cd(BASE_DIR)
-        print "#######"+str(sh.pwd())
 
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits png"')
