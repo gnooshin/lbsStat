@@ -10,7 +10,8 @@ import pandas as pd
 import numpy as np
 from slacker import Slacker
 import sh
-
+from selenium import webdriver
+import contextlib,time
 # import json, ast,pprint
 # from sets import Set
 from errbot.backends.slack import SlackRoom
@@ -41,8 +42,6 @@ def get_visit_stat(uri,branch,company,start,end):
     # pp = pprint.PrettyPrinter(indent=2)
     return resp
 def gen_webshot(url,file):
-    from selenium import webdriver
-    import contextlib,time
     @contextlib.contextmanager
     def quitting(thing):
         yield thing
@@ -53,7 +52,7 @@ def gen_webshot(url,file):
         driver.get(url) #'http://gnooshin.github.io/lbsStat/lbsStat.html'
         time.sleep(5)
         driver.save_screenshot(file) #'lbsstat.png'
-        print "##### pwd :"+str(sh.pwd()) 
+        print "##### pwd :"+str(sh.pwd())
         print "##### png file : "+str(file)
 
 class LbsStat(BotPlugin):
@@ -134,7 +133,7 @@ class LbsStat(BotPlugin):
         sh.git.push('origin', 'origin/gh-pages')
 
         #TODO: should push lbsStat.html to github
-        gen_webshot(CHART_URL,IMG_PATH)
+        self.gen_webshot(CHART_URL,IMG_PATH)
         print "#######"+str(sh.pwd())
 
         sh.git.add('.')
