@@ -9,6 +9,7 @@ import jmespath
 import pandas as pd
 import numpy as np
 from slacker import Slacker
+import sh
 
 # import json, ast,pprint
 # from sets import Set
@@ -52,6 +53,7 @@ def gen_webshot(url,file):
         driver.get(url) #'http://gnooshin.github.io/lbsStat/lbsStat.html'
         time.sleep(5)
         driver.save_screenshot(file) #'lbsstat.png'
+        print "##### pwd :"+str(sh.pwd()) 
         print "##### png file : "+str(file)
 
 class LbsStat(BotPlugin):
@@ -124,18 +126,15 @@ class LbsStat(BotPlugin):
                     # print line
                     fout.write(line)
                 fout.close()
-        import sh
         sh.cd(BASE_DIR)
         print "#######"+str(sh.pwd())
         repo_origin = 'https://github.com/gnooshin/lbsStat.git'
-        # sh.git.remote('add', 'sh-pages', repo_origin)
         sh.git.add('.')
         sh.git.commit('-m', '"SsgBot commits html"')
         sh.git.push('origin', 'origin/gh-pages')
 
         #TODO: should push lbsStat.html to github
         gen_webshot(CHART_URL,IMG_PATH)
-        # sh.git.remote('add', 'sh-pages', repo_origin)
         print "#######"+str(sh.pwd())
 
         sh.git.add('.')
