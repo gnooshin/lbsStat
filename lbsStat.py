@@ -133,7 +133,7 @@ class LbsStat(BotPlugin):
         sh.git.push('origin', 'origin/gh-pages')
 
         #TODO: should push lbsStat.html to github
-        gen_webshot(CHART_URL,IMG_PATH)
+        gen_webshot(CHART_URL,'lbsstat.png')
         print "#######"+str(sh.pwd())
 
         sh.git.add('.')
