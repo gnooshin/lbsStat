@@ -65,10 +65,13 @@ class LbsStat(BotPlugin):
         if len(self.audiences) == 0:
             if os.path.isfile(ROSTER):
                 self.audiences=pickle.load(open(ROSTER, 'rb'))
-            else:
+            if len(self.audiences) == 0:
                 print "mess.to"+str(mess.to)+",  mess.frm:"+str(mess.frm)
                 receiver=(mess.to if str(mess.to) in str(mess.frm) else mess.frm )
                 self.send(receiver,SVC_NAME+' 수신자 명단이 비어 있습니다. 받을 사람들에 대한 정보를 addpeople 명령어로 넣어주세요')
+                return
+            receiver=(mess.to if str(mess.to) in str(mess.frm) else mess.frm )
+            self.send(receiver,SVC_NAME+'수신자 명단 : '+str(self.audiences))
         if mess.body.find('ssglbs stat') != -1:
             statStr=self.draw_chart()
             att='[{'
