@@ -138,10 +138,9 @@ class LbsStat(BotPlugin):
         #TODO: should push lbsStat.html to github
         gen_webshot(CHART_URL_LOCAL,'lbsstat.png')
         print "#######"+str(sh.pwd())
-
-        # sh.git.add('.')
-        # sh.git.commit('-m', '"SsgBot commits png"')
-        # sh.git.push('origin', 'origin/gh-pages')
+        sh.git.add('lbsStat.html lbsstat.png')
+        sh.git.commit('-m', '"SsgBot commits png and html"')
+        sh.git.push('origin', 'origin/gh-pages')
 
 
 #보낼 문장 생성
