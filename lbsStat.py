@@ -25,10 +25,13 @@ headers={'request_type':'1', 'access_token':'79E5F0BA4352C7D23BAF36618DF605E881E
           'Content-Type':'application/json','Accept-Encoding':'gzip, deflate',
           'x-ssg-deviceid':'88888888-8888-8888-8888-888888888888', 'x-ssg-userid':'C88888888/restful_check'}
 # global audiences=set([])
+
 BASE_DIR='errbot-plugins/LbsStat/'
 ROSTER= BASE_DIR+'roster.pkl'
 IMG_PATH=BASE_DIR+'lbsstat.png'
 CHART_URL='http://gnooshin.github.io/lbsStat/lbsStat.html'
+CHART_URL_LOCAL='file:///gdev/sm/ssgbot/errbot-plugins/LbsStat/lbsStat.html'
+
 SVC_NAME='SSG LBS Platform Stat '
 
 
@@ -127,18 +130,18 @@ class LbsStat(BotPlugin):
                 fout.close()
         sh.cd(BASE_DIR)
         print "#######"+str(sh.pwd())
-        repo_origin = 'https://github.com/gnooshin/lbsStat.git'
-        sh.git.add('.')
-        sh.git.commit('-m', '"SsgBot commits html"')
-        sh.git.push('origin', 'origin/gh-pages')
+        # repo_origin = 'https://github.com/gnooshin/lbsStat.git'
+        # sh.git.add('.')
+        # sh.git.commit('-m', '"SsgBot commits html"')
+        # sh.git.push('origin', 'origin/gh-pages')
 
         #TODO: should push lbsStat.html to github
-        gen_webshot(CHART_URL,'lbsstat.png')
+        gen_webshot(CHART_URL_LOCAL,'lbsstat.png')
         print "#######"+str(sh.pwd())
 
-        sh.git.add('.')
-        sh.git.commit('-m', '"SsgBot commits png"')
-        sh.git.push('origin', 'origin/gh-pages')
+        # sh.git.add('.')
+        # sh.git.commit('-m', '"SsgBot commits png"')
+        # sh.git.push('origin', 'origin/gh-pages')
 
 
 #보낼 문장 생성
